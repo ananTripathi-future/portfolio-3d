@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
+  --color-dark-bg: #0f172a;
+  --color-dark-card: #1e293b;
+  --color-dark-surface: #162036;
+}
+
+@layer base {
+  body {
+    background-color: #0f172a;
+    color: white;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ───── Glassmorphism Panel ───── */
+.glass-panel {
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+/* ───── Glow Text Utilities ───── */
+.glow-primary {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 50px rgba(99, 102, 241, 0.2);
+}
+.glow-accent {
+  text-shadow: 0 0 20px rgba(236, 72, 153, 0.4), 0 0 40px rgba(236, 72, 153, 0.15);
+}
+
+/* ───── Animated gradient border ───── */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(99, 102, 241, 0.2); box-shadow: 0 0 30px rgba(99, 102, 241, 0.06); }
+  50% { border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 0 40px rgba(139, 92, 246, 0.1); }
+}
+.animate-border-glow {
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+/* ───── Subtle pulsing glow behind hero ───── */
+@keyframes heroGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.05); }
+}
+.hero-glow-orb {
+  animation: heroGlow 6s ease-in-out infinite;
+}
+
+/* ───── Mobile Responsive ───── */
+@media (max-width: 640px) {
+  .glass-panel {
+    padding: 1.5rem !important;
+  }
+}
