@@ -841,9 +841,10 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="lg:col-span-7 flex flex-col gap-6"
+              className="lg:col-span-7 bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-pink-500/30 transition-colors flex flex-col gap-6"
             >
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-center lg:text-left">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-indigo-500 opacity-60" />
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed text-center lg:text-left">
                 Interested in collaborating on cybersecurity research, offensive/defensive operations, or quantum computing projects? Feel free to reach out through any of these platforms!
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
@@ -854,7 +855,7 @@ export default function Portfolio() {
                   { label: "LeetCode", href: "https://leetcode.com", icon: <SiLeetcode size={24} />, color: "from-amber-500/20 to-yellow-500/20", border: "hover:border-amber-500/50", text: "text-amber-400" },
                 ].map((c) => (
                   <a key={c.label} href={c.href} target="_blank" rel="noreferrer"
-                    className={`flex flex-col items-center gap-2 p-4 bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl ${c.border} transition-all duration-300 group hover:-translate-y-1`}>
+                    className={`flex flex-col items-center gap-2 p-4 bg-white/5 border border-white/10 rounded-2xl ${c.border} transition-all duration-300 group hover:-translate-y-1`}>
                     <div className={`h-11 w-11 rounded-full bg-gradient-to-br ${c.color} flex items-center justify-center ${c.text} group-hover:scale-115 transition-transform`}>
                       {c.icon}
                     </div>
