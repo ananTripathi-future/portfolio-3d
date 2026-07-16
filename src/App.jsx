@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Sphere, Grid } from "@react-three/drei";
-import { Mail, Menu, X, ExternalLink, Download, GraduationCap, Code2, Shield, Cpu } from "lucide-react";
+import { Mail, Menu, X, ExternalLink, Download, GraduationCap, Code2, Shield, Cpu, Database, Award, Briefcase, MapPin, Phone, CheckCircle2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import * as THREE from "three";
@@ -285,18 +285,30 @@ function SectionHeader({ children, gradient = "from-purple-400 to-pink-500" }) {
 /* ───── Data ───── */
 const GITHUB = "https://github.com/ananTripathi-future";
 const EMAIL = "omanant.tripathi@gmail.com";
+const PHONE = "+91 6383528758";
+const LOCATION = "Chennai, Tamil Nadu, India";
+const LINKEDIN = "https://linkedin.com/in/anant-tripathi-782679337";
 
-const navItems = ["Home", "About", "Education", "Skills", "Projects", "Contact"];
+const navItems = ["Home", "About", "Journey", "Skills", "Projects", "Contact"];
 
-const skills = [
-  { name: "Python", icon: <Code2 size={22} /> },
-  { name: "C++", icon: <Code2 size={22} /> },
-  { name: "Java", icon: <Code2 size={22} /> },
-  { name: "Cybersecurity", icon: <Shield size={22} /> },
-  { name: "Linux", icon: <Cpu size={22} /> },
-  { name: "Quantum Computing", icon: <Cpu size={22} /> },
-  { name: "Networking", icon: <Shield size={22} /> },
-];
+const groupedSkills = {
+  "Programming & Data": [
+    { name: "Python", icon: <Code2 size={20} /> },
+    { name: "C++", icon: <Code2 size={20} /> },
+    { name: "SQL", icon: <Database size={20} /> },
+  ],
+  "Cybersecurity": [
+    { name: "Networking Fundamentals", icon: <Shield size={20} /> },
+    { name: "Linux", icon: <Cpu size={20} /> },
+    { name: "Web Application Security", icon: <Shield size={20} /> },
+    { name: "Vulnerability Assessment", icon: <Shield size={20} /> },
+    { name: "Network Security", icon: <Shield size={20} /> },
+  ],
+  "Quantum Computing": [
+    { name: "Quantum Algorithms", icon: <Cpu size={20} /> },
+    { name: "Post-Quantum Cryptography", icon: <Shield size={20} /> },
+  ],
+};
 
 const projects = [
   {
@@ -446,7 +458,7 @@ export default function Portfolio() {
               </div>
 
               <p className="text-gray-300 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
-                Building quantum-resilient security systems and breaking into the future of ethical hacking — one vulnerability at a time.
+                Computer Science Engineering Student passionate about Cybersecurity, Ethical Hacking, and Quantum Computing. Building secure systems and solving real-world security challenges.
               </p>
             </div>
 
@@ -464,7 +476,7 @@ export default function Portfolio() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }} className="flex gap-4 sm:gap-5 justify-center mt-8 sm:mt-10">
               {[
                 { href: GITHUB, icon: <FaGithub size={22} />, hover: "hover:border-indigo-400 hover:text-indigo-400 hover:shadow-[0_0_15px_-3px_rgba(99,102,241,0.4)]" },
-                { href: "https://linkedin.com", icon: <FaLinkedin size={22} />, hover: "hover:border-violet-400 hover:text-violet-400 hover:shadow-[0_0_15px_-3px_rgba(139,92,246,0.4)]" },
+                { href: LINKEDIN, icon: <FaLinkedin size={22} />, hover: "hover:border-violet-400 hover:text-violet-400 hover:shadow-[0_0_15px_-3px_rgba(139,92,246,0.4)]" },
                 { href: `mailto:${EMAIL}`, icon: <Mail size={22} />, hover: "hover:border-pink-400 hover:text-pink-400 hover:shadow-[0_0_15px_-3px_rgba(236,72,153,0.4)]" },
               ].map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noreferrer" className={`group p-3 sm:p-3.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300 ${s.hover}`}>
@@ -485,47 +497,223 @@ export default function Portfolio() {
 
       {/* ── ABOUT ── */}
       <section id="About" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <SectionHeader gradient="from-indigo-400 to-pink-500">About Me</SectionHeader>
-          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-pink-500 opacity-50 group-hover:opacity-100 transition-opacity" />
-            <div className="flex flex-col gap-6 text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed text-center">
-              <p>
-                I’m <span className="text-indigo-400 font-bold">Anant Tripathi</span>, a Computer Science Engineering student passionate about <span className="text-indigo-400 font-semibold">Cybersecurity</span>, <span className="text-violet-400 font-semibold">Ethical Hacking</span>, and <span className="text-pink-400 font-semibold">Quantum Computing</span>. I enjoy building secure systems, exploring advanced technologies, and solving real-world security challenges through innovation and research.
-              </p>
-              <p>
-                I have participated in multiple hackathons and won <span className="text-amber-400 font-semibold">1st place in IoRT and Cybersecurity competitions</span>. My interests include Purple Teaming, secure communication systems, AI-powered security solutions, and quantum-resilient technologies.
-              </p>
-              <p>
-                Currently, I’m focused on strengthening my skills in <span className="text-indigo-400 font-medium">Python</span>, <span className="text-violet-400 font-medium">C++</span>, <span className="text-pink-400 font-medium">Linux</span>, <span className="text-indigo-400 font-medium">Networking</span>, and <span className="text-violet-400 font-medium">Offensive Security</span> while building impactful projects that combine cybersecurity and emerging technologies.
-              </p>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
+            {/* Left side: Professional Summary & Objective */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-7 flex flex-col gap-6"
+            >
+              <div className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-pink-500 opacity-60" />
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" /> Professional Summary
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                  I am a motivated <span className="text-indigo-400 font-semibold">Computer Science Engineering student</span> at SRM Institute of Science and Technology with a strong interest in <span className="text-violet-400 font-semibold">Cybersecurity</span>, <span className="text-pink-400 font-semibold">Quantum Computing</span>, Artificial Intelligence, and Secure Systems. I'm passionate about offensive and defensive security, post-quantum cryptography, and building innovative security solutions. I am actively seeking internship and research opportunities to contribute while continuously expanding my technical expertise.
+                </p>
+              </div>
+
+              <div className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-violet-500/30 transition-colors">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-pink-500 opacity-60" />
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-violet-400" /> Career Objective
+                </h3>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                  To become a highly skilled cybersecurity professional specializing in <span className="text-indigo-400 font-semibold">Purple Team operations</span> while contributing to cutting-edge research in cybersecurity, quantum computing, and artificial intelligence. I aspire to build secure technologies that solve real-world security challenges and make meaningful contributions to the technology and defense sectors.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right side: Areas of Interest & Soft Skills */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col gap-6"
+            >
+              {/* Areas of Interest */}
+              <div className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-pink-500/30 transition-colors">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-indigo-500 opacity-60" />
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-pink-400" /> Areas of Interest
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Cybersecurity", "Purple Team Operations", "Ethical Hacking",
+                    "Post-Quantum Cryptography", "Quantum Computing", "Artificial Intelligence",
+                    "Network Security"
+                  ].map((interest) => (
+                    <span
+                      key={interest}
+                      className="px-3 py-1.5 text-xs font-semibold bg-white/5 text-gray-300 rounded-lg border border-white/10 hover:border-indigo-400 hover:text-indigo-400 transition-colors cursor-default"
+                    >
+                      {interest}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Soft Skills */}
+              <div className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-60" />
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" /> Core Soft Skills
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Problem Solving", "Analytical Thinking", "Leadership",
+                    "Teamwork", "Communication", "Adaptability", "Continuous Learning"
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-xs font-semibold bg-indigo-500/10 text-indigo-400 rounded-lg border border-indigo-500/20 hover:bg-indigo-500/20 transition-all cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ── EDUCATION ── */}
-      <section id="Education" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader gradient="from-indigo-400 to-violet-500">Education</SectionHeader>
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden group hover:border-indigo-500/40 transition-colors">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity" />
-            <div className="flex items-start gap-6">
-              <div className="hidden sm:flex h-16 w-16 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-violet-500/20 items-center justify-center shrink-0">
-                <GraduationCap size={32} className="text-indigo-400" />
-              </div>
+      {/* ── JOURNEY ── */}
+      <section id="Journey" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader gradient="from-indigo-400 to-violet-500">My Journey</SectionHeader>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+            {/* Experience Column */}
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                <Briefcase className="text-indigo-400" /> Professional Experience
+              </h3>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-indigo-500/40 transition-colors"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20">
+                  Jan 2026 – May 2026
+                </span>
+                <h4 className="text-xl sm:text-2xl font-bold text-white mt-4">Cybersecurity Intern</h4>
+                <p className="text-indigo-400 font-medium text-base mt-1">Supraja Technologies</p>
+                <ul className="text-gray-300 mt-4 space-y-2 text-sm leading-relaxed list-disc list-inside">
+                  <li>Completed practical training in cybersecurity concepts and security best practices.</li>
+                  <li>Gained exposure to networking, vulnerability assessment, and information security fundamentals.</li>
+                  <li>Worked on cybersecurity-related tasks and learned industry-standard security methodologies.</li>
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Education & Certifications Column */}
+            <div className="space-y-8">
+              {/* Education */}
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">SRM University</h3>
-                <p className="text-lg text-indigo-400 font-medium mt-1">B.Tech — Computer Science & Engineering</p>
-                <p className="text-gray-400 mt-2">2024 — 2028</p>
-                <p className="text-gray-400 mt-4 leading-relaxed text-sm">
-                  Focusing on cybersecurity, quantum computing, and secure systems engineering with hands-on research projects in post-quantum cryptography and AI-driven security.
-                </p>
+                <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                  <GraduationCap className="text-violet-400" /> Education
+                </h3>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-violet-500/40 transition-colors"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-pink-500 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-violet-500/10 text-violet-400 rounded-full border border-violet-500/20">
+                    2024 – 2028
+                  </span>
+                  <h4 className="text-xl sm:text-2xl font-bold text-white mt-4">SRM Institute of Science and Technology</h4>
+                  <p className="text-violet-400 font-medium text-base mt-1">B.Tech — Computer Science & Engineering</p>
+                  <div className="flex items-center gap-2 mt-3">
+                    <span className="text-xs font-semibold px-2 py-0.5 bg-pink-500/10 text-pink-400 rounded border border-pink-500/20">CGPA: 8.57 / 10</span>
+                    <span className="text-gray-400 text-xs">Kattankulathur, India</span>
+                  </div>
+                  <p className="text-gray-400 mt-4 leading-relaxed text-sm">
+                    Focusing on cybersecurity, quantum computing, and secure systems engineering with hands-on research in post-quantum cryptography and AI-driven security.
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Certifications */}
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                  <CheckCircle2 className="text-pink-400" /> Certifications
+                </h3>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-5 relative overflow-hidden group hover:border-pink-500/40 transition-colors"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-indigo-500 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Award className="text-pink-400 mt-1 shrink-0" size={18} />
+                      <div>
+                        <h4 className="text-sm sm:text-base font-bold text-white">NPTEL – Object Oriented Programming and Design</h4>
+                        <p className="text-gray-400 text-xs mt-0.5">National Programme on Technology Enhanced Learning</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Award className="text-pink-400 mt-1 shrink-0" size={18} />
+                      <div>
+                        <h4 className="text-sm sm:text-base font-bold text-white">NPTEL – Advanced Programming Practice <span className="text-pink-400 font-semibold">(Elite)</span></h4>
+                        <p className="text-gray-400 text-xs mt-0.5">National Programme on Technology Enhanced Learning</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
-          </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ACHIEVEMENTS ── */}
+      <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader gradient="from-purple-400 to-pink-500">Key Achievements</SectionHeader>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { title: "1st Place", desc: "Cybersecurity Hackathon", detail: "Won first prize for innovative threat defense prototype.", highlight: true },
+              { title: "1st Place", desc: "IoRT Hackathon", detail: "IIT Varanasi competition for Internet of Robotic Things secure telemetry.", highlight: true },
+              { title: "1st Place", desc: "Reuse & Recraft Model", detail: "Won first prize in model creation and recycling design competition.", highlight: false },
+              { title: "Member", desc: "IEI Student Chapter", detail: "Official student member of the Institution of Engineers (India).", highlight: false },
+            ].map((ach, i) => (
+              <motion.div
+                key={ach.desc}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className={`group p-6 bg-[#1e293b]/50 backdrop-blur-md border rounded-2xl flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 ${
+                  ach.highlight ? "border-amber-500/30 hover:border-amber-500/60 shadow-[0_0_20px_-5px_rgba(245,158,11,0.2)]" : "border-white/10 hover:border-indigo-500/40"
+                }`}
+              >
+                <div>
+                  <div className={`h-12 w-12 rounded-xl flex items-center justify-center mb-4 ${ach.highlight ? "bg-amber-500/10 text-amber-400" : "bg-indigo-500/10 text-indigo-400"}`}>
+                    <Award size={24} />
+                  </div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">{ach.title}</h4>
+                  <h3 className="text-lg font-bold text-white mt-1 group-hover:text-indigo-400 transition-colors">{ach.desc}</h3>
+                  <p className="text-gray-400 text-sm mt-3 leading-relaxed">{ach.detail}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -533,14 +721,30 @@ export default function Portfolio() {
       <section id="Skills" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
         <div className="max-w-6xl mx-auto">
           <SectionHeader gradient="from-violet-400 to-pink-400">Technical Arsenal</SectionHeader>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-5">
-            {skills.map((skill, i) => (
-              <motion.div key={skill.name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="group p-4 sm:p-6 bg-[#1e293b]/50 backdrop-blur-md border border-white/5 rounded-xl sm:rounded-2xl text-center hover:bg-[#263248]/60 hover:border-violet-500/40 transition-all duration-300">
-                <div className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center text-violet-400 group-hover:scale-110 transition-transform">
-                  {skill.icon}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {Object.entries(groupedSkills).map(([category, items], catIdx) => (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: catIdx * 0.15 }}
+                className="bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 shadow-xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-pink-500 opacity-60" />
+                <h3 className="text-xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
+                  {category}
+                </h3>
+                <div className="flex flex-col gap-4">
+                  {items.map((skill, i) => (
+                    <div key={skill.name} className="flex items-center gap-4 p-3 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 group/item">
+                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center text-violet-400 group-hover/item:scale-110 transition-transform">
+                        {skill.icon}
+                      </div>
+                      <span className="text-gray-200 font-medium text-sm sm:text-base group-hover/item:text-white transition-colors">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-sm sm:text-base text-gray-200 font-medium group-hover:text-white transition-colors">{skill.name}</h3>
               </motion.div>
             ))}
           </div>
@@ -586,27 +790,80 @@ export default function Portfolio() {
 
       {/* ── CONTACT ── */}
       <section id="Contact" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 relative z-10 bg-transparent">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <SectionHeader gradient="from-indigo-400 to-pink-400">Let's Connect</SectionHeader>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <p className="text-sm sm:text-lg text-gray-400 mb-8 sm:mb-12">Interested in collaborating on cybersecurity research or quantum computing projects? Reach out!</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 max-w-3xl mx-auto">
-              {[
-                { label: "Email", href: `mailto:${EMAIL}`, icon: <Mail size={28} />, color: "from-pink-500/20 to-red-500/20", border: "hover:border-pink-500/50", text: "text-pink-400" },
-                { label: "GitHub", href: GITHUB, icon: <FaGithub size={28} />, color: "from-indigo-500/20 to-violet-500/20", border: "hover:border-indigo-500/50", text: "text-indigo-400" },
-                { label: "LinkedIn", href: "https://linkedin.com", icon: <FaLinkedin size={28} />, color: "from-violet-500/20 to-purple-500/20", border: "hover:border-violet-500/50", text: "text-violet-400" },
-                { label: "LeetCode", href: "https://leetcode.com", icon: <SiLeetcode size={28} />, color: "from-amber-500/20 to-yellow-500/20", border: "hover:border-amber-500/50", text: "text-amber-400" },
-              ].map((c) => (
-                <motion.a key={c.label} href={c.href} target="_blank" rel="noreferrer" whileHover={{ y: -4 }}
-                  className={`flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl ${c.border} transition-all duration-300 group`}>
-                  <div className={`h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-gradient-to-br ${c.color} flex items-center justify-center ${c.text} group-hover:scale-110 transition-transform`}>
-                    {c.icon}
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+            {/* Contact Details Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-5 bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-indigo-500/30 transition-colors"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-pink-500 opacity-60" />
+              <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                    <MapPin size={20} />
                   </div>
-                  <span className="text-gray-300 font-medium text-sm">{c.label}</span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Location</p>
+                    <p className="text-sm font-medium">{LOCATION}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                  <div className="h-10 w-10 rounded-xl bg-violet-500/10 text-violet-400 flex items-center justify-center">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Phone</p>
+                    <a href={`tel:${PHONE}`} className="text-sm font-medium hover:underline">{PHONE}</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors">
+                  <div className="h-10 w-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Email</p>
+                    <a href={`mailto:${EMAIL}`} className="text-sm font-medium hover:underline">{EMAIL}</a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Social Links Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-7 flex flex-col gap-6"
+            >
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-center lg:text-left">
+                Interested in collaborating on cybersecurity research, offensive/defensive operations, or quantum computing projects? Feel free to reach out through any of these platforms!
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                {[
+                  { label: "Email", href: `mailto:${EMAIL}`, icon: <Mail size={24} />, color: "from-pink-500/20 to-red-500/20", border: "hover:border-pink-500/50", text: "text-pink-400" },
+                  { label: "GitHub", href: GITHUB, icon: <FaGithub size={24} />, color: "from-indigo-500/20 to-violet-500/20", border: "hover:border-indigo-500/50", text: "text-indigo-400" },
+                  { label: "LinkedIn", href: LINKEDIN, icon: <FaLinkedin size={24} />, color: "from-violet-500/20 to-purple-500/20", border: "hover:border-violet-500/50", text: "text-violet-400" },
+                  { label: "LeetCode", href: "https://leetcode.com", icon: <SiLeetcode size={24} />, color: "from-amber-500/20 to-yellow-500/20", border: "hover:border-amber-500/50", text: "text-amber-400" },
+                ].map((c) => (
+                  <a key={c.label} href={c.href} target="_blank" rel="noreferrer"
+                    className={`flex flex-col items-center gap-2 p-4 bg-[#1e293b]/50 backdrop-blur-md border border-white/10 rounded-2xl ${c.border} transition-all duration-300 group hover:-translate-y-1`}>
+                    <div className={`h-11 w-11 rounded-full bg-gradient-to-br ${c.color} flex items-center justify-center ${c.text} group-hover:scale-115 transition-transform`}>
+                      {c.icon}
+                    </div>
+                    <span className="text-gray-300 font-medium text-xs">{c.label}</span>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Footer */}
@@ -614,7 +871,7 @@ export default function Portfolio() {
           <p>© {new Date().getFullYear()} Anant Tripathi. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href={GITHUB} target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition-colors">GitHub</a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition-colors">LinkedIn</a>
+            <a href={LINKEDIN} target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition-colors">LinkedIn</a>
           </div>
         </div>
       </section>
